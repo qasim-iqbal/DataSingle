@@ -34,14 +34,14 @@ this shold set up your database connection now go to repository and open up file
 Now you should be all set up to use the website.
 
 ## Built With
-PostgreSQL - Database Management System \n
-Apache Web Server - Local Server
+* PostgreSQL - Database Management System
+* Apache Web Server - Local Server
 
 ## Authors
-This repository was moved from Durham Colleg's Git to Github.com. Its previous authors included
-Nathan Williams - Profile View and Generating Fake users
-Qasim Iqbal (me) - Profile Search Functionality
-Jonathan Hermans - User Login / Logout 
-Karence Ma - Setting up Database and SQL scripts
+This repository was moved from Durham Colleg's Git to Github.com. Its previous authors included <br/>
+- Nathan Williams - Profile View and Generating Fake users<br/>
+- Qasim Iqbal (me) - Profile Search Functionality<br/>
+- Jonathan Hermans - User Login / Logout <br/>
+- Karence Ma - Setting up Database and SQL scripts<br/>
 The functionality shown foreach user is not limited to what is shown above. It is overall generally what each author worked on.
 
