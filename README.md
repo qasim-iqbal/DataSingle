@@ -33,11 +33,11 @@ this shold set up your database connection now go to repository and open up file
 
 Now you should be all set up to use the website.
 
-# Built With
-PostgreSQL - Database Management System
+## Built With
+PostgreSQL - Database Management System \n
 Apache Web Server - Local Server
 
-# Authors
+## Authors
 This repository was moved from Durham Colleg's Git to Github.com. Its previous authors included
 Nathan Williams - Profile View and Generating Fake users
 Qasim Iqbal (me) - Profile Search Functionality
