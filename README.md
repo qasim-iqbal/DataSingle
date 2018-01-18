@@ -1,56 +1,47 @@
-Project Title
-One Paragraph of project description goes here
+# Data Single
+This is a Dating website for programmers. The website has old 90's look to it with simple and clean user interface.
 
-Getting Started
+## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-Prerequisites
-What things you need to install the software and how to install them
+## Prerequisites
+To run the website on your local machine you would need two things:
+* A local HTTP WEB Server
+* Database Management System (DBMS)
 
-Give examples
-Installing
-A step by step series of examples that tell you have to get a development env running
+## Installing
+There are many softwares available you can use to start localhost. I recomend Apache Web Server and PostgreSQL just because they are open-source and available on all platforms (Linux, Mac , Windows)
 
-Say what the step will be
+Follow the link below for Instructions on how to Install Apache Web Server on you computer
+* https://www.sitepoint.com/how-to-install-apache-on-windows/
 
-Give the example
-And repeat
+Link below to install PostreSQL
+* https://www.labkey.org/Documentation/wiki-page.view?name=installPostgreSQLWindows
 
-until finished
-End with an example of getting some data out of the system or using it for a little demo
+Once you have installed both software clone this repository in your computer and follow the steps below to set up software:
+1) Go to folder where you downloaded Apache web server. Open "conf" folder.
+2) open file "httpd.conf" go to line line 244 to 246 set directory to folder to the folder where you cloned this repository like this
+![image](https://user-images.githubusercontent.com/27502011/35115759-44ac4b86-fc57-11e7-8db7-e0ed3523d0f5.png)
+now your http web server should be all set up Moving on to PostgreSQL
 
-Running the tests
-Explain how to run the automated tests for this system
+1) after installing PostgreSQL, search up software "pgAdmin <version#>" in your computer.
+2) set up database by creating new Database.
+3) copy all .sql files form Sql Directory from this repository and execute them in your database. This will create all the tables necessary for database.
 
-Break down into end to end tests
-Explain what these tests test and why
+this shold set up your database connection now go to repository and open up file "constants.php" and add your database name, user name and password. replace with values on right 
+![image](https://user-images.githubusercontent.com/27502011/35116235-b4825062-fc58-11e7-924b-306a1fab39f0.png)
 
-Give an example
-And coding style tests
-Explain what these tests test and why
+Now you should be all set up to use the website.
 
-Give an example
-Deployment
-Add additional notes about how to deploy this on a live system
+# Built With
+PostgreSQL - Database Management System
+Apache Web Server - Local Server
 
-Built With
-Dropwizard - The web framework used
-Maven - Dependency Management
-ROME - Used to generate RSS Feeds
-Contributing
-Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
+# Authors
+This repository was moved from Durham Colleg's Git to Github.com. Its previous authors included
+Nathan Williams - Profile View and Generating Fake users
+Qasim Iqbal (me) - Profile Search Functionality
+Jonathan Hermans - User Login / Logout 
+Karence Ma - Setting up Database and SQL scripts
+The functionality shown foreach user is not limited to what is shown above. It is overall generally what each author worked on.
 
-Versioning
-We use SemVer for versioning. For the versions available, see the tags on this repository.
-
-Authors
-Billie Thompson - Initial work - PurpleBooth
-See also the list of contributors who participated in this project.
-
-License
-This project is licensed under the MIT License - see the LICENSE.md file for details
-
-Acknowledgments
-Hat tip to anyone who's code was used
-Inspiration
-etc
