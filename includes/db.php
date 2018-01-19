@@ -33,7 +33,7 @@ $statement15 = pg_prepare($conn, "report_user", 'INSERT INTO offensives(reporter
 function getProperty($conn, $table, $value)
 {
 	$sql = "SELECT property FROM " . $table . " WHERE value = " . $value;
-	return pg_fetch_result(pg_query($conn, $sql), 0, 0);
+	return pg_fetch_result(pg_query($conn, $sql));
 }
 
 //  Build DropDown Functions

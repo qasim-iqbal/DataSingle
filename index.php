@@ -52,7 +52,7 @@
                 </div>
                 <div class="search_column_2">
                   <label> From </label>
-
+                  
                   <?php buildInputType("number","From","age_from",true,MIN_USER_AGE,MAX_USER_AGE,MIN_USER_AGE); ?>
                   <label> To </label>
                   <?php buildInputType("number","To","age_to",true,MIN_USER_AGE,MAX_USER_AGE,MIN_USER_AGE); ?>
@@ -84,31 +84,41 @@
           </div>
         </div>
         <div class="column_profile">
+        <?php $sql = "SELECT * FROM profiles,users WHERE profiles.user_id = users.user_id"; 
+                        $results = pg_query($conn, $sql);
+                        $profiles = pg_fetch_all($results);
+                        mt_srand(time());
+                        $random_number = mt_rand(0,count($profiles));
+                        $profiles[$random_number]['user_id'];    
+                  ?>
           <h2>New Posted Profile</h2>
           <div class="detail">
             <div class="row">
               <p class="left">Name :</p>
-              <p class="right">Jenifer</p>
+              <p class="right"><?php echo $profiles[$random_number]['first_name']?></p>
             </div>
             <div class="row_1">
               <p class="left">Age :</p>
-              <p class="right">21 Years</p>
+              <p class="right"><?php echo  calculateAge($profiles[$random_number]['birth_date']) ?></p>
             </div>
             <div class="row">
               <p class="left">City :</p>
-              <p class="right">London, UK</p>
+              <p class="right"><?php $property = getPropertyByValue('city',$profiles[$random_number]['city']); 
+                                          echo  $b = str_replace( ',', '', $property );?></p>
             </div>
             <div class="row_1">
-              <p class="left">humor :</p>
-              <p class="right">clever/ quick witted</p>
+              <p class="left">Body Type :</p>
+              
+              <p class="right"><?php $property =  getPropertyByValue('body_type',$profiles[$random_number]['body_type']); 
+                                    echo  $b = str_replace( ',', '', $property );?> </p>
             </div>
             <div class="row">
-              <p class="left">living :</p>
-              <p class="right">with parents</p>
+              <p class="left">Height :</p>
+              <p class="right"><?php echo convertInchesToFormattedHeight($profiles[$random_number]['height_inches'])?></p>
             </div>
             <div class="row_1">
               <p class="left">email :</p>
-              <p class="right">jlo89pop@soulmate.com</p>
+              <p class="right"><?php echo $profiles[$random_number]['email_address']?></p>
             </div>
           </div>
           <div class="bottom_curve">
@@ -127,5 +137,4 @@
         </div>
       </div>
 
-?>
     <?php include 'footer.php'?>
