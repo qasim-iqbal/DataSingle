@@ -84,11 +84,12 @@
           </div>
         </div>
         <div class="column_profile">
-        <?php $sql = "SELECT * FROM profiles,users WHERE profiles.user_id = users.user_id"; 
+        <?php $sql = "SELECT * FROM profiles,users WHERE profiles.user_id = users.user_id AND profiles.images > 0"; 
                         $results = pg_query($conn, $sql);
                         $profiles = pg_fetch_all($results);
                         mt_srand(time());
-                        $random_number = mt_rand(0,count($profiles));
+                        $profile_count = count($profiles);
+                        $random_number = mt_rand(0,$profile_count-1);
                         $profiles[$random_number]['user_id'];    
                   ?>
           <h2>New Posted Profile</h2>
@@ -128,8 +129,26 @@
         <div class="column_photo">
           <h2>Recently Added Photos</h2>
           <div class="gallery">
-            <div class="photo_row"> <a href="#"><img src="images/pic_1.gif" alt="" /></a> <a href="#"><img src="images/pic_2.gif" alt="" /></a> <a href="#"><img src="images/pic_3.gif" alt="" /></a> </div>
-            <div class="photo_row"> <a href="#"><img src="images/pic_4.gif" alt="" /></a> <a href="#"><img src="images/pic_5.gif" alt="" /></a> <a href="#"><img src="images/pic_6.gif" alt="" /></a> </div>
+            <?php 
+
+          $image_count = $profile_count;
+        
+          for($i=0; $i<3; $i++)
+          { 
+            echo "<div class='photo_row'>";
+            for($j=0; $j<3; $j++)
+            {
+
+              if($image_count>0)
+                displayImageInFrame($profiles[$image_count-=1]['user_id'],1); 
+               
+                                        
+            }
+            echo "</div>";
+          
+          }
+
+            ?>
           </div>
           <div class="bottom_curve">
             <p><img src="images/icon_3.gif" alt="" /><a href="#">more photo</a></p>

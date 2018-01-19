@@ -29,7 +29,7 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] != "" && $_SESSION['
 	header('Location: aup.php');
 }
 
-if (!isset($_SESSION['user_id'] ) && $_SESSION['user_type']==INCOMPLETE.CLIENT)
+if (!isset($_SESSION['user_id'] ) || $_SESSION['user_type']==INCOMPLETE.CLIENT)
 {
 	header("Location:user-login.php");
 }
@@ -105,19 +105,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 	}
 	else if(isset($_POST['btn_report']))
 	{
-		//sert", 'INSERT INTO users(user_id, password, user_type, email_address, first_name, last_name,birth_date,enrol_date,last_access) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9)');
-	//$sql = "INSERT INTO offensives(reporter, offender,status,last_reported) VALUES('" . $_SESSION['user_id'] . "', '" . $user_id . "', '" .OPEN."','" . date("Y-m-d", time()) . "')";
-	//	$results = pg_query($conn, $sql);
+
 		pg_execute($conn,"report_user",array($_SESSION['user_id'],$user_id,OPEN,date("Y-m-d")));
 		echo "user reported";
-		// if($results != false)
-		// {
-		// 	$result_message = "You have reported  " . $user_id;
-		// }
-		// else
-		// {
-		// 	$result_message = "Error! Failed to report " . $user_id;
-		// }
+
 	}
 		
 }

@@ -403,11 +403,44 @@ function generateTextRow($row_class, $title, $values)
 	}
 	echo '</div>';
 }
+
 function displayImage($user_id, $image_index)
 {
-	
+
 	$image_directory = USER_IMAGES_DIRECTORY . $user_id . "/" . $user_id . "_" . $image_index . ".jpg";
-	echo '<img src="' . $image_directory . "?random=" . time() . '" alt="No Image Available"/>';
+
+	echo  '<img src="' . $image_directory . "?random=" . time() . '" alt="No Image Available"/>';
+
+}
+function displayImageInFrame($user_id, $image_index)
+{
+
+	$image_directory = USER_IMAGES_DIRECTORY . $user_id . "/" . $user_id . "_" . $image_index . ".jpg";
+
+	echo  "<a href='profile-display.php?user_id=".$user_id."' >";
+	echo  '<img src="' . $image_directory . "?random=" . time() . '" alt="No Image Available"/>';
+	echo "</a>"; 
+}
+function displayImagesInFrameFormat($user_id, $img_cell_styling, $image_row_width = IMAGE_ROW_WIDTH )
+{
+	$conn = db_connect();
+	$results = pg_execute($conn, "count_images", array($user_id));
+	$row = pg_fetch_row($results);
+	
+
+	if($row[0] > 0)
+	{
+		echo "<div class=\"img_row\">";
+	}
+	
+	
+		
+		echo "<div class=" . $img_cell_styling . ">";
+		displayImageInFrame($user_id, 1);
+	if($row[0] > 0)
+	{
+		echo "</div>";
+	}
 }
 function displayImagesFormatted($user_id, $img_cell_styling, $image_row_width = IMAGE_ROW_WIDTH, $hasOptions=true)
 {
